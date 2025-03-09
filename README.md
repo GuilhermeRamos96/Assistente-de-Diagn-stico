@@ -1,0 +1,1 @@
+# Assistente-de-Diagn-stico
