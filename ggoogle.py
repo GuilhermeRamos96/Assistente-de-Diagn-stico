@@ -12,12 +12,12 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Criar um espaço para a chave API
+# Chave API
 api_key = st.text_input("Digite sua chave da API Gemini:", type="password")
 
 def get_best_model():
     """Escolhe um modelo Gemini compatível e ativo."""
-    preferred_models = ["gemini-pro", "gemini 1.5"]  # Apenas modelos suportados
+    preferred_models = ["gemini-pro", "gemini 1.5"]  
 
     try:
         models = genai.list_models()
@@ -81,11 +81,14 @@ if api_key:
             - {exames}
 
             Por favor:
-            1. Liste os diagnósticos diferenciais organizados por PROBABILIDADE, do mais provável ao menos provável, considerando os dados epidemiológicos e a apresentação clínica.
-            2. Organize os diagnósticos por GRAVIDADE, indicando possíveis complicações caso não seja tratado adequadamente.
-            3. Sugira os próximos passos diagnósticos mais apropriados.
-            4. Indique se há sinais de alarme que exigiriam atenção imediata ou encaminhamento para emergência.
-            """
+                1. Liste os diagnósticos diferenciais organizados por PROBABILIDADE, do mais provável ao menos provável, considerando os dados epidemiológicos e a apresentação clínica. Para cada diagnóstico, forneça uma breve justificativa baseada nos sintomas e sinais apresentados.
+        
+                2. Em seguida, reorganize os mesmos diagnósticos por GRAVIDADE, do mais grave (potencialmente fatal ou com necessidade de intervenção imediata) ao menos grave. Para cada diagnóstico, indique o tempo estimado para intervenção e possíveis complicações caso não seja tratado adequadamente.
+        
+                3. Sugira os próximos passos diagnósticos mais apropriados para confirmar ou descartar cada uma das hipóteses principais.
+        
+                4. Indique se há sinais de alarme ou 'red flags' na apresentação que exigiriam atenção imediata ou encaminhamento para emergência.
+                """
 
             try:
                 with st.spinner("🧠 Analisando..."):
