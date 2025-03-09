@@ -23,8 +23,8 @@ def get_best_model():
         models = genai.list_models()
         available_models = [model.name for model in models]
        
-                st.success(f"✅ Modelo selecionado: {model}")
-                return model
+        st.success(f"✅ Modelo selecionado: {model}")
+        return model
 
         st.error("❌ Nenhum modelo compatível disponível. Verifique sua conta no Google Cloud.")
         return None
