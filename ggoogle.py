@@ -17,15 +17,12 @@ api_key = st.text_input("Digite sua chave da API Gemini:", type="password")
 
 def get_best_model():
     """Escolhe um modelo Gemini compatível e ativo."""
-    preferred_models = ["gemini-pro", "gemini 1.5"]  
+    preferred_models = ["gemini-pro", "gemini 1.5", "gemini-2.0-flash"]  
 
     try:
         models = genai.list_models()
         available_models = [model.name for model in models]
-
-        # Filtra apenas modelos ativos da lista preferida
-        for model in preferred_models:
-            if model in available_models:
+       
                 st.success(f"✅ Modelo selecionado: {model}")
                 return model
 
